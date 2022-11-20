@@ -24,6 +24,8 @@ periodicelements Oxygen
 Output
 ```
 ┌──────────────────────────┬───────────────────┐
+│ Property                 │ Value             │
+├──────────────────────────┼───────────────────┤
 │ Atomic Number            │ 8                 │
 │ Symbol                   │ O                 │
 │ Atomic Mass              │ 15.999            │
