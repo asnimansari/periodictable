@@ -3,7 +3,14 @@ use crate::periodic_table::print_element_info;
 mod periodic_table;
 
 fn main() {
-    let mut element_name = std::env::args()
+    let args: Vec<String> = std::env::args().collect();
+    if args.len() == 1 {
+        println!("Please provide an element name, Usage: periodictable <element name>");
+        return;
+    }
+
+    let mut element_name = args
+        .into_iter()
         .nth(1)
         .expect("Please provide a element name");
     let mut element_name_chars: Vec<char> =
