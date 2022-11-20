@@ -1,5 +1,5 @@
-use ascii_table::{Align, AsciiTable};
-use serde::{Deserialize, Serialize};
+use ascii_table::AsciiTable;
+use serde::Deserialize;
 use std::collections::HashMap;
 use std::fmt::Display;
 
@@ -46,116 +46,101 @@ fn convert_option_to_string<T: Display>(option: Option<T>) -> String {
     }
 }
 impl ElementContents {
-    pub fn into_printable_format(&self) -> Vec<Vec<String>> {
-        let mut result: Vec<Vec<String>> = Vec::new();
+    fn into_printable_format(&self) -> Vec<Vec<String>> {
+        return vec![
+            vec!["Atomic Number".to_string(), self.atomic_number.to_string()],
+            vec!["Symbol".to_string(), self.symbol.clone()],
+            vec!["Atomic Mass".to_string(), self.atomic_mass.to_string()],
+            vec!["Neutron Count".to_string(), self.neutron_count.to_string()],
+            vec!["Proton Count".to_string(), self.proton_count.to_string()],
+            vec![
+                "Electron Count".to_string(),
+                self.electron_count.to_string(),
+            ],
+            vec!["Period".to_string(), self.period.to_string()],
+            vec!["Group".to_string(), convert_option_to_string(self.group)],
+            vec!["Phase".to_string(), self.phase.clone()],
+            vec![
+                "Radioactive".to_string(),
+                convert_option_to_string(self.radioactive.clone()),
+            ],
+            vec![
+                "Natural".to_string(),
+                convert_option_to_string(self.natural.clone()),
+            ],
+            vec![
+                "Metal".to_string(),
+                convert_option_to_string(self.metal.clone()),
+            ],
+            vec![
+                "Nonmetal".to_string(),
+                convert_option_to_string(self.nonmetal.clone()),
+            ],
+            vec![
+                "Metalloid".to_string(),
+                convert_option_to_string(self.metalloid.clone()),
+            ],
+            vec![
+                "Element Type".to_string(),
+                convert_option_to_string(self.element_type.clone()),
+            ],
+            vec![
+                "Atomic Radius".to_string(),
+                convert_option_to_string(self.atomic_radius),
+            ],
+            vec![
+                "Electronegativity".to_string(),
+                convert_option_to_string(self.electronegativity),
+            ],
+            vec![
+                "First Ionization".to_string(),
+                convert_option_to_string(self.first_ionization),
+            ],
+            vec![
+                "Density".to_string(),
+                convert_option_to_string(self.density),
+            ],
+            vec![
+                "Melting Point".to_string(),
+                convert_option_to_string(self.melting_point),
+            ],
+            vec![
+                "Boiling Point".to_string(),
+                convert_option_to_string(self.boiling_point),
+            ],
+            vec![
+                "Number of Isotopes".to_string(),
+                convert_option_to_string(self.number_of_isotopes),
+            ],
+            vec![
+                "Discoverer".to_string(),
+                convert_option_to_string(self.discoverer.clone()),
+            ],
+            vec!["Year".to_string(), convert_option_to_string(self.year)],
+            vec![
+                "Specific Heat".to_string(),
+                convert_option_to_string(self.specific_heat),
+            ],
+            vec![
+                "Number of Shells".to_string(),
+                convert_option_to_string(self.number_of_shells),
+            ],
+            vec![
+                "Number of Valence".to_string(),
+                convert_option_to_string(self.number_of_valence),
+            ],
+            vec![
+                "Electronic Configuration".to_string(),
+                convert_option_to_string(self.electronic_configuration.clone()),
+            ],
+        ];
+    }
+    pub fn print(&self) {
+        let mut ascii_table = AsciiTable::default();
+        ascii_table.set_max_width(80);
 
-        result.push(vec![
-            "Atomic Number".to_string(),
-            self.atomic_number.to_string(),
-        ]);
-        result.push(vec!["Symbol".to_string(), self.symbol.clone()]);
-        result.push(vec![
-            "Atomic Mass".to_string(),
-            self.atomic_mass.to_string(),
-        ]);
-        result.push(vec![
-            "Neutron Count".to_string(),
-            self.neutron_count.to_string(),
-        ]);
-        result.push(vec![
-            "Proton Count".to_string(),
-            self.proton_count.to_string(),
-        ]);
-        result.push(vec![
-            "Electron Count".to_string(),
-            self.electron_count.to_string(),
-        ]);
-        result.push(vec!["Period".to_string(), self.period.to_string()]);
-        result.push(vec![
-            "Group".to_string(),
-            convert_option_to_string(self.group),
-        ]);
-        result.push(vec!["Phase".to_string(), self.phase.clone()]);
-        result.push(vec![
-            "Radioactive".to_string(),
-            convert_option_to_string(self.radioactive.clone()),
-        ]);
-        result.push(vec![
-            "Natural".to_string(),
-            convert_option_to_string(self.natural.clone()),
-        ]);
-        result.push(vec![
-            "Metal".to_string(),
-            convert_option_to_string(self.metal.clone()),
-        ]);
-        result.push(vec![
-            "Nonmetal".to_string(),
-            convert_option_to_string(self.nonmetal.clone()),
-        ]);
-        result.push(vec![
-            "Metalloid".to_string(),
-            convert_option_to_string(self.metalloid.clone()),
-        ]);
-        result.push(vec![
-            "Element Type".to_string(),
-            convert_option_to_string(self.element_type.clone()),
-        ]);
-        result.push(vec![
-            "Atomic Radius".to_string(),
-            convert_option_to_string(self.atomic_radius),
-        ]);
-        result.push(vec![
-            "Electronegativity".to_string(),
-            convert_option_to_string(self.electronegativity),
-        ]);
-        result.push(vec![
-            "First Ionization".to_string(),
-            convert_option_to_string(self.first_ionization),
-        ]);
-        result.push(vec![
-            "Density".to_string(),
-            convert_option_to_string(self.density),
-        ]);
-        result.push(vec![
-            "Melting Point".to_string(),
-            convert_option_to_string(self.melting_point),
-        ]);
-
-        result.push(vec![
-            "Boiling Point".to_string(),
-            convert_option_to_string(self.boiling_point),
-        ]);
-        result.push(vec![
-            "Number of Isotopes".to_string(),
-            convert_option_to_string(self.number_of_isotopes),
-        ]);
-        result.push(vec![
-            "Discoverer".to_string(),
-            convert_option_to_string(self.discoverer.clone()),
-        ]);
-        result.push(vec![
-            "Year".to_string(),
-            convert_option_to_string(self.year),
-        ]);
-
-        result.push(vec![
-            "Specific Heat".to_string(),
-            convert_option_to_string(self.specific_heat),
-        ]);
-        result.push(vec![
-            "Number of Shells".to_string(),
-            convert_option_to_string(self.number_of_shells),
-        ]);
-
-        result.push(vec![
-            "Number of Valence".to_string(),
-            convert_option_to_string(self.number_of_valence),
-        ]);
-        result.push(vec![
-            "Electronic Configuration".to_string(),
-            convert_option_to_string(self.electronic_configuration.clone()),
-        ]);
-        result
+        let data: Vec<Vec<String>> = self.into_printable_format();
+        ascii_table.print(data);
     }
 }
 
@@ -167,21 +152,11 @@ fn load_json_to_struct() -> HashMap<String, ElementContents> {
     return deserialized_data;
 }
 
-fn _print_element_info(element_info: &ElementContents) {
-    let mut ascii_table = AsciiTable::default();
-    ascii_table.set_max_width(80);
-
-    let data: Vec<Vec<String>> = element_info.into_printable_format();
-    ascii_table.print(data);
-}
-
 pub fn print_element_info(element_name: &str) {
     let all_element_info = load_json_to_struct();
     let request_element_info = all_element_info.get(element_name);
     match request_element_info {
-        Some(element_info) => {
-            _print_element_info(&element_info);
-        }
+        Some(element_info) => element_info.print(),
         None => {
             println!("No element named: {} found", element_name);
         }
