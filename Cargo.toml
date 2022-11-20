@@ -8,7 +8,7 @@ repository = "https://github.com/asnimansari/periodictable"
 documentation = "https://github.com/asnimansari/periodictable"
 readme = "README.md"
 homepage = "https://github.com/asnimansari/periodictable"
-keywords = ["chemistry", "periodic table"]
+keywords = ["chemistry", "periodictable"]
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
