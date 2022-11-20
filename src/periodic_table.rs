@@ -139,6 +139,9 @@ impl ElementContents {
         let mut ascii_table = AsciiTable::default();
         ascii_table.set_max_width(80);
 
+        ascii_table.column(0).set_header("Property");
+        ascii_table.column(1).set_header("Value");
+
         let data: Vec<Vec<String>> = self.into_printable_format();
         ascii_table.print(data);
     }
