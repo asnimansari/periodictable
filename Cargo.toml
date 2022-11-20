@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 authors= ["Asnim Puthenpurayil Ansari<asnim.ansari@gmail.com>"]
 description = "A periodic information tool"
+repository = "https://github.com/asnimansari/periodictable"
+documentation = "https://github.com/asnimansari/periodictable"
+readme = "README.md"
+homepage = "https://github.com/asnimansari/periodictable"
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
