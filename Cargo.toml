@@ -1,5 +1,5 @@
 [package]
-name = "periodictable"
+name = "periodicelements"
 version = "0.1.0"
 edition = "2021"
 authors= ["Asnim Puthenpurayil Ansari<asnim.ansari@gmail.com>"]
